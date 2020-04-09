@@ -9,7 +9,7 @@ GPIO.setmode(GPIO.BCM)
 Led = 10
 
 GPIO.setup(Led, GPIO.OUT)
-GPIO.output(Led, GPIO.OUT)
+GPIO.output(Led, GPIO.LOW)
 
 # GUI definitions
 win = Tk()
@@ -169,121 +169,102 @@ def close():
 
 def activateMorse():
     word = entryBox.get()
-    word = word.Lower()
+    length = len(word)
     counter = 0
+    labelActive = False;
 
-    while counter < 12:
+    if length > 12:
+        close()
+
+    else:
         for letter in word:
             if letter == "a":
                 a()
-                counter += 1
                 continue
             elif letter == "b":
                 b()
-                counter += 1
                 continue
             elif letter == "c":
                 c()
-                counter += 1
                 continue
             elif letter == "d":
                 d()
-                counter += 1
                 continue
             elif letter == "e":
                 e()
-                counter += 1
                 continue
             elif letter == "f":
                 f()
-                counter += 1
                 continue
             elif letter == "g":
                 g()
-                counter += 1
                 continue
             elif letter == "h":
                 h()
-                counter += 1
                 continue
             elif letter == "i":
                 i()
-                counter += 1
                 continue
             elif letter == "j":
                 j()
-                counter += 1
                 continue
             elif letter == "k":
                 k()
-                counter += 1
                 continue
             elif letter == "l":
                 l()
-                counter += 1
                 continue
             elif letter == "m":
                 m()
-                counter += 1
                 continue
             elif letter == "n":
                 n()
-                counter += 1
                 continue
             elif letter == "o":
                 o()
-                counter += 1
                 continue
             elif letter == "p":
                 p()
-                counter += 1
                 continue
             elif letter == "q":
                 q()
-                counter += 1
                 continue
             elif letter == "r":
                 r()
-                counter += 1
                 continue
             elif letter == "s":
                 s()
-                counter += 1
                 continue
             elif letter == "t":
                 t()
-                counter += 1
                 continue
             elif letter == "u":
                 u()
-                counter += 1
                 continue
             elif letter == "v":
                 v()
-                counter += 1
                 continue
             elif letter == "w":
                 w()
-                counter += 1
                 continue
             elif letter == "x":
                 x()
-                counter += 1
                 continue
             elif letter == "y":
                 y()
-                counter += 1
                 continue
             elif letter == "z":
                 z()
-                counter += 1
                 continue
+            
+
+        
 
 
 
 
 # widgets
-entryBoxLabel = Label(win, Text = 'Enter a name to display in morse code (12 characters max)')
+entryBoxLabel = Label(win, text = 'Enter a name to display in morse code (12 characters max)')
 entryBoxLabel.grid(row = 0, column = 0)
 
 entryBox = Entry(win)
@@ -293,7 +274,7 @@ submitButton = Button(win, text = "Submit", command = activateMorse)
 submitButton.grid(row = 4, column = 0)
 
 exitButton = Button(win, text = "Exit", command = close)
-exitButton.grid(row = 6, clumn = 0)
+exitButton.grid(row = 6, column = 0)
 
 win.protocol("WM_DELETE_WINDOW", close)
 win.mainloop()
